@@ -4,9 +4,6 @@
     
 
 @section('content')
-    <p>This is home page</p>
+    <p>This is about Page</p>
+    <p>we are apic</p>
 @endsection
-
-@can('secret')
-    <p>This is a special link</p>
-@endcan

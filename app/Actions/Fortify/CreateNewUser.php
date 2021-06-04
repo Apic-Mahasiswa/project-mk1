@@ -4,6 +4,8 @@ namespace App\Actions\Fortify;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Models\status;
+use App\Models\Member;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -23,18 +25,48 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'Team_name' => ['required', 'string', 'max:255'],
+            'Member1_name' => ['required', 'string', 'max:255'],
+            'Member1_email' => ['required', 'string', 'email', 'max:255'],
+            'Member1_contact' => ['required', 'string', 'max:255'],
+            'Member2_name' => ['required', 'string', 'max:255'],
+            'Member2_email' => ['required', 'string', 'email', 'max:255'],
+            'Member2_contact' => ['required', 'string', 'max:255'],
+            'Member3_name' => ['required', 'string', 'max:255'],
+            'Member3_email' => ['required', 'string', 'email', 'max:255'],
+            'Member3_contact' => ['required', 'string', 'max:255'],
+            //'attch' => ['required', 'string'],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
         return DB::transaction(function () use ($input) {
-            return tap(User::create([
-                'name' => $input['name'],
-                'email' => $input['email'],
+
+            $user = User::create([
+                'name' => $input['Team_name'],
                 'password' => Hash::make($input['password']),
-            ]), function (User $user) {
+            ]);
+
+            $status = status::create([
+                'flag' => False, 
+                'attachment' => 'jsfjsgfLkwfjksajkbkfasbfklasbfssbfjkbfbasbfkajbsfkjafb',
+                'user_id' => $user->id
+            ,]);
+            
+            for($i = 1; $i<=3; $i++):
+                $member = member::create([
+                    'name' => $input['Member'.$i.'_name'],
+                    'email' => $input['Member'.$i.'_email'],
+                    'contact' => $input['Member'.$i.'_contact'],
+                    'University' => 'E',
+                    'user_id' => $user->id,
+                ]);
+                $member->User()->associate($user)->save();
+            endfor;
+
+            $status->User()->associate($user)->save();
+            $user->save();
+            return tap($user, function (User $user) {
                 $this->createTeam($user);
             });
         });

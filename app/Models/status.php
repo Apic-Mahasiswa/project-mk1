@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class status extends Model
 {
+    protected $fillable = [
+        'flag','user_id','attachment'
+    ];
+
     use HasFactory;
 
     public function user(){

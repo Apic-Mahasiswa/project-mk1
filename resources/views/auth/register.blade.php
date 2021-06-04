@@ -10,13 +10,54 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-label for="Team_name" value="{{ __('Team Name') }}" />
+                <x-jet-input id="Team_name" class="block mt-1 w-full" type="text" name="Team_name" :value="old('Team_name')" required autofocus autocomplete="Team_name" />
+            </div>
+            <h3 class="block mt-1 ">Member 1 :</h3>
+            <div>
+                <x-jet-label for="Member1_name" value="{{ __('Name') }}" />
+                <x-jet-input id="Member1_name" class="block mt-1 w-full" type="text" name="Member1_name" :value="old('Member1_name')" required autofocus autocomplete="Member1_name" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-label for="Member1_email" value="{{ __('Email') }}" />
+                <x-jet-input id="Member1_email" class="block mt-1 w-full" type="email" name="Member1_email" :value="old('Member1_email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="Member1_contact" value="{{ __('Contact') }}" />
+                <x-jet-input id="Member1_contact" class="block mt-1 w-full" type="text" name="Member1_contact" :value="old('Member1_contact')" required />
+            </div>
+
+            <h3 class="block mt-1 ">Member 2 :</h3>
+            <div>
+                <x-jet-label for="Member2_name" value="{{ __('Name') }}" />
+                <x-jet-input id="Member2_name" class="block mt-1 w-full" type="text" name="Member2_name" :value="old('Member2_name')" required autofocus autocomplete="Member2_name" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="Member2_email" value="{{ __('Email') }}" />
+                <x-jet-input id="Member2_email" class="block mt-1 w-full" type="email" name="Member2_email" :value="old('Member2_email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="Member2_contact" value="{{ __('Contact') }}" />
+                <x-jet-input id="Member2_contact" class="block mt-1 w-full" type="text" name="Member2_contact" :value="old('Member2_contact')" required />
+            </div>
+            <h3 class="block mt-1 ">Member 3 :</h3>
+            <div>
+                <x-jet-label for="Member3_name" value="{{ __('Name') }}" />
+                <x-jet-input id="Member3_name" class="block mt-1 w-full" type="text" name="Member3_name" :value="old('Member3_name')" required autofocus autocomplete="Member3_name" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="Member3_email" value="{{ __('Email') }}" />
+                <x-jet-input id="Member3_email" class="block mt-1 w-full" type="email" name="Member3_email" :value="old('Member3_email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="Member3_contact" value="{{ __('Contact') }}" />
+                <x-jet-input id="Member3_contact" class="block mt-1 w-full" type="text" name="Member3_contact" :value="old('Member3_contact')" required />
             </div>
 
             <div class="mt-4">
