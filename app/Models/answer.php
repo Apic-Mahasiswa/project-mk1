@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class answer extends Model
 {
 
+    protected $fillable = [
+        'assignment_id', 'user_id', 'attachment', 'posted_at'
+    ];
+
     public function assignment(){
         return $this->belongsTo(assignment::class);
     }
